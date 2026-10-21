@@ -1,0 +1,22 @@
+{% extends "newsroom/base.html" %}
+{% block title %}Review queue{% endblock %}
+{% block content %}
+<h1 class="h3 mb-3">Articles awaiting approval</h1>
+{% for article in articles %}
+  <div class="card mb-3"><div class="card-body">
+    <h2 class="h5"><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h2>
+    <p class="text-muted small">
+      By {{ article.author.username }} &middot;
+      {% if article.publisher %}{{ article.publisher.name }}{% else %}Independent{% endif %}
+    </p>
+    <p>{{ article.content|truncatewords:50 }}</p>
+    <form method="post" action="{% url 'approve_article' article.pk %}" class="d-inline">{% csrf_token %}
+      <button class="btn btn-success btn-sm">Approve</button>
+    </form>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'article_update' article.pk %}">Edit</a>
+    <a class="btn btn-outline-danger btn-sm" href="{% url 'article_delete' article.pk %}">Reject</a>
+  </div></div>
+{% empty %}
+  <p>Nothing to review right now.</p>
+{% endfor %}
+{% endblock %}

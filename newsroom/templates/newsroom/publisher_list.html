@@ -1,0 +1,27 @@
+{% extends "newsroom/base.html" %}
+{% block title %}Publishers{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3 mb-0">Publishers</h1>
+  {% if perms.newsroom.add_publisher %}
+    <a class="btn btn-primary btn-sm" href="{% url 'publisher_create' %}">New publisher</a>
+  {% endif %}
+</div>
+{% for publisher in publishers %}
+  <div class="card mb-3"><div class="card-body">
+    <h2 class="h5">{{ publisher.name }}</h2>
+    <p>{{ publisher.description }}</p>
+    <p class="mb-1"><strong>Editors:</strong>
+      {% for editor in publisher.editors.all %}{{ editor.username }}{% if not forloop.last %}, {% endif %}{% empty %}none yet{% endfor %}
+    </p>
+    <p class="mb-2"><strong>Journalists:</strong>
+      {% for journalist in publisher.journalists.all %}{{ journalist.username }}{% if not forloop.last %}, {% endif %}{% empty %}none yet{% endfor %}
+    </p>
+    {% if perms.newsroom.change_publisher %}
+      <a class="btn btn-outline-primary btn-sm" href="{% url 'publisher_update' publisher.pk %}">Edit / assign people</a>
+    {% endif %}
+  </div></div>
+{% empty %}
+  <p>No publishers yet. Create the first one.</p>
+{% endfor %}
+{% endblock %}

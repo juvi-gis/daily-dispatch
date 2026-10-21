@@ -1,0 +1,14 @@
+{% extends "newsroom/base.html" %}
+{% block content %}
+<h1 class="h3 mb-3">Newsletters</h1>
+{% for newsletter in newsletters %}
+  <div class="card mb-3"><div class="card-body">
+    <h2 class="h5"><a href="{% url 'newsletter_detail' newsletter.pk %}">{{ newsletter.title }}</a></h2>
+    <p class="text-muted small">By {{ newsletter.author.username }} &middot; {{ newsletter.created_at|date:"j M Y" }}</p>
+    <p>{{ newsletter.description|truncatewords:30 }}</p>
+  </div></div>
+{% empty %}
+  <p>No newsletters yet.</p>
+{% endfor %}
+{% include "newsroom/pagination.html" %}
+{% endblock %}

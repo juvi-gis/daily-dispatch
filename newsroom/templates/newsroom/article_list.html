@@ -1,0 +1,18 @@
+{% extends "newsroom/base.html" %}
+{% block content %}
+<h1 class="h3 mb-3">Latest articles</h1>
+{% for article in articles %}
+  <div class="card mb-3"><div class="card-body">
+    <h2 class="h5"><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h2>
+    <p class="text-muted small">
+      By {{ article.author.username }} &middot;
+      {% if article.publisher %}{{ article.publisher.name }}{% else %}Independent{% endif %}
+      &middot; {{ article.created_at|date:"j M Y" }}
+    </p>
+    <p>{{ article.content|truncatewords:40 }}</p>
+  </div></div>
+{% empty %}
+  <p>No articles have been published yet.</p>
+{% endfor %}
+{% include "newsroom/pagination.html" %}
+{% endblock %}

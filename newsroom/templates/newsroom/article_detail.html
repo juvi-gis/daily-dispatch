@@ -1,0 +1,26 @@
+{% extends "newsroom/base.html" %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block content %}
+<article>
+  <h1>{{ article.title }}</h1>
+  <p class="text-muted">
+    By {{ article.author.username }} &middot;
+    {% if article.publisher %}{{ article.publisher.name }}{% else %}Independent{% endif %}
+    &middot; {{ article.created_at|date:"j M Y" }}
+    {% if article.status == 'pending' %}<span class="badge bg-warning text-dark">Awaiting editor approval</span>{% endif %}
+    {% if article.status == 'draft' %}<span class="badge bg-secondary">Draft</span>{% endif %}
+  </p>
+  <div class="mb-4">{{ article.content|linebreaks }}</div>
+</article>
+{% if can_publish %}
+  <form method="post" action="{% url 'publish_article' article.pk %}" class="d-inline">{% csrf_token %}
+    <button class="btn btn-success">Publish</button>
+  </form>
+{% endif %}
+{% if can_modify %}
+  <a class="btn btn-outline-primary" href="{% url 'article_update' article.pk %}">Edit</a>
+  {% if perms.newsroom.delete_article %}
+    <a class="btn btn-outline-danger" href="{% url 'article_delete' article.pk %}">Delete</a>
+  {% endif %}
+{% endif %}
+{% endblock %}

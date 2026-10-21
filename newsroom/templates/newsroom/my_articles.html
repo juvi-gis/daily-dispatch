@@ -1,0 +1,50 @@
+{% extends "newsroom/base.html" %}
+{% block title %}My articles{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3 mb-0">My articles</h1>
+  <a class="btn btn-primary btn-sm" href="{% url 'article_create' %}">Write article</a>
+</div>
+
+<h2 class="h5 mt-4">Drafts <small class="text-muted">(independent, not published yet)</small></h2>
+{% for article in drafts %}
+  <div class="card mb-2"><div class="card-body">
+    <h3 class="h6"><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+    <p class="text-muted small mb-2">Created {{ article.created_at|date:"j M Y" }}</p>
+    <form method="post" action="{% url 'publish_article' article.pk %}" class="d-inline">{% csrf_token %}
+      <button class="btn btn-success btn-sm">Publish</button>
+    </form>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'article_update' article.pk %}">Edit</a>
+    <a class="btn btn-outline-danger btn-sm" href="{% url 'article_delete' article.pk %}">Delete</a>
+  </div></div>
+{% empty %}
+  <p class="text-muted">No drafts.</p>
+{% endfor %}
+
+<h2 class="h5 mt-4">Waiting for editor approval <small class="text-muted">(publisher articles)</small></h2>
+{% for article in pending %}
+  <div class="card mb-2"><div class="card-body">
+    <h3 class="h6"><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+    <p class="text-muted small mb-2">{{ article.publisher.name }} &middot; created {{ article.created_at|date:"j M Y" }}</p>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'article_update' article.pk %}">Edit</a>
+    <a class="btn btn-outline-danger btn-sm" href="{% url 'article_delete' article.pk %}">Delete</a>
+  </div></div>
+{% empty %}
+  <p class="text-muted">Nothing is waiting for approval.</p>
+{% endfor %}
+
+<h2 class="h5 mt-4">Published</h2>
+{% for article in published %}
+  <div class="card mb-2"><div class="card-body">
+    <h3 class="h6"><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
+    <p class="text-muted small mb-2">
+      {% if article.publisher %}{{ article.publisher.name }}{% else %}Independent{% endif %}
+      &middot; created {{ article.created_at|date:"j M Y" }}
+    </p>
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'article_update' article.pk %}">Edit</a>
+    <a class="btn btn-outline-danger btn-sm" href="{% url 'article_delete' article.pk %}">Delete</a>
+  </div></div>
+{% empty %}
+  <p class="text-muted">Nothing published yet.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,686 @@
+<mxfile host="Electron" agent="Claude" pages="5">
+  <diagram name="ERD" id="ERD-page">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="erd2" value="Daily Dispatch – database design (3NF). Bold = primary key, italic = foreign key, yellow = junction table, grey = Django auth." style="text;html=1;align=left;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="0" width="800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="erd3" value="Publisher" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="50" width="230" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="erd4" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd3">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd5" value="name (unique)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd3">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd6" value="description" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd3">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd7" value="PublisherEditor" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#fff2cc;strokeColor=#d6b656;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="230" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="erd8" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd7">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd9" value="publisher_id (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd7">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd10" value="user_id (FK) – role Editor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd7">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd11" value="PublisherJournalist" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#fff2cc;strokeColor=#d6b656;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="50" width="230" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="erd12" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd11">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd13" value="publisher_id (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd11">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd14" value="user_id (FK) – role Journalist" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd11">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd15" value="CustomUser" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="280" width="230" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="erd16" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd15">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd17" value="username (unique)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd15">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd18" value="email" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd15">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd19" value="password (hashed)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd15">
+          <mxGeometry x="0" y="92" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd20" value="role (reader / editor / journalist)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd15">
+          <mxGeometry x="0" y="114" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd21" value="first_name, last_name" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd15">
+          <mxGeometry x="0" y="136" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd22" value="is_staff, is_active" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd15">
+          <mxGeometry x="0" y="158" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd23" value="ReaderPublisherSub" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#fff2cc;strokeColor=#d6b656;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="230" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="erd24" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd23">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd25" value="customuser_id (FK) – reader" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd23">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd26" value="publisher_id (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd23">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd27" value="ReaderJournalistSub" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#fff2cc;strokeColor=#d6b656;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="300" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="erd28" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd27">
+          <mxGeometry x="0" y="26" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd29" value="from_customuser_id (FK) – reader" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd27">
+          <mxGeometry x="0" y="48" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd30" value="to_customuser_id (FK) – journalist" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd27">
+          <mxGeometry x="0" y="70" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd31" value="UserGroup" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#f5f5f5;strokeColor=#666666;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="440" width="230" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="erd32" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd31">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd33" value="customuser_id (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd31">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd34" value="group_id (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd31">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd35" value="auth_Group" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#f5f5f5;strokeColor=#666666;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="230" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="erd36" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd35">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd37" value="name (Reader / Editor / Journalist)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd35">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd38" value="Article" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="580" width="260" height="224" as="geometry" />
+        </mxCell>
+        <mxCell id="erd39" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="26" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd40" value="title" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="48" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd41" value="content" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="70" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd42" value="author_id (FK) – Journalist" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="92" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd43" value="publisher_id (FK, null = independent)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="114" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd44" value="created_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="136" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd45" value="approved (bool)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="158" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd46" value="approved_by_id (FK, null) – Editor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="180" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd47" value="approval_notified (bool)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd38">
+          <mxGeometry x="0" y="202" width="260" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd48" value="Newsletter" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="580" width="230" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="erd49" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd48">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd50" value="title" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd48">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd51" value="description" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd48">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd52" value="created_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd48">
+          <mxGeometry x="0" y="92" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd53" value="author_id (FK) – Journalist" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd48">
+          <mxGeometry x="0" y="114" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd54" value="NewsletterArticle" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#fff2cc;strokeColor=#d6b656;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="640" width="230" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="erd55" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd54">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd56" value="newsletter_id (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd54">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd57" value="article_id (FK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd54">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd58" value="ApprovedArticleLog" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="860" width="230" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="erd59" value="id (PK)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=1;" vertex="1" parent="erd58">
+          <mxGeometry x="0" y="26" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd60" value="article_id (FK, null)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=2;" vertex="1" parent="erd58">
+          <mxGeometry x="0" y="48" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd61" value="title" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd58">
+          <mxGeometry x="0" y="70" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd62" value="payload (JSON)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd58">
+          <mxGeometry x="0" y="92" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd63" value="received_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;overflow=hidden;rotatable=0;html=1;fontStyle=0;" vertex="1" parent="erd58">
+          <mxGeometry x="0" y="114" width="230" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="erd64" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd7" target="erd3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd65" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd7" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd66" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd11" target="erd3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd67" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd11" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd68" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd23" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd23" target="erd3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd70" value="reader" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd27" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd71" value="journalist" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd27" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd31" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd73" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd31" target="erd35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd74" value="author" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd38" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd75" value="approved by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERzeroToOne;endFill=0;fontSize=10;" edge="1" parent="1" source="erd38" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERzeroToOne;endFill=0;fontSize=10;" edge="1" parent="1" source="erd38" target="erd3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd77" value="author" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd48" target="erd15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd54" target="erd48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERone;endFill=0;fontSize=10;" edge="1" parent="1" source="erd54" target="erd38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="erd80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=ERmany;startFill=0;endArrow=ERzeroToOne;endFill=0;fontSize=10;" edge="1" parent="1" source="erd58" target="erd38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="UseCases" id="Use-page">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="use2" value="Use cases and role permissions" style="text;html=1;align=left;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="0" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="use3" value="Reader" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="use4" value="Journalist" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="use5" value="Editor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="900" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="use6" value="News application" style="swimlane;html=1;startSize=26;fillColor=none;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="340" height="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="use7" value="Register (any role) and be logged in" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="90" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use8" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use3" target="use7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use9" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use10" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use11" value="View published articles" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="164" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use12" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use3" target="use11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use13" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use14" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use15" value="View newsletters" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="238" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use16" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use3" target="use15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use17" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use18" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use19" value="Manage subscriptions" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="312" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use20" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use3" target="use19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use21" value="Receive published articles by email" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="386" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use22" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use3" target="use21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use23" value="Write article (independent or publisher)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="460" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use24" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use25" value="See my drafts, pending and published" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="534" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use26" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use27" value="Publish my independent draft" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="608" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use28" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use29" value="Edit / delete own articles" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="682" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use30" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use31" value="Create / edit / delete own newsletters" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="756" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use32" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use33" value="Review pending publisher articles" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="830" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use34" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use35" value="Approve publisher article" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="904" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use36" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use37" value="Create publishers, assign editors and journalists" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="978" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use38" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use39" value="Edit / delete any article or newsletter" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1052" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use40" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use41" value="Use REST API with token" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1126" width="260" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="use42" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use3" target="use41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use43" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use4" target="use41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use44" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="use5" target="use41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="use45" value="&lt;b&gt;Role permissions&lt;/b&gt;&lt;br&gt;&lt;table border=&#39;1&#39; cellpadding=&#39;6&#39; style=&#39;border-collapse:collapse&#39;&gt;&lt;tr&gt;&lt;th&gt;Permission&lt;/th&gt;&lt;th&gt;Reader&lt;/th&gt;&lt;th&gt;Editor&lt;/th&gt;&lt;th&gt;Journalist&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;View articles and newsletters&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Create articles (draft or pending)&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Create newsletters&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Update articles / newsletters&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;✔ any&lt;/td&gt;&lt;td&gt;✔ own&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Delete articles / newsletters&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;✔ any&lt;/td&gt;&lt;td&gt;✔ own&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Approve publisher articles&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Publish own independent articles&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Create publishers, assign staff&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Subscribe to publishers / journalists&lt;/td&gt;&lt;td&gt;✔&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;td&gt;–&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Django group&lt;/td&gt;&lt;td&gt;Reader&lt;/td&gt;&lt;td&gt;Editor&lt;/td&gt;&lt;td&gt;Journalist&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;strokeColor=#666666;fillColor=#ffffff;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="700" y="90" width="560" height="330" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="PageFlow" id="Pag-page">
+    <mxGraphModel dx="1414" dy="889" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pag2" parent="1" style="text;html=1;align=left;fontStyle=1;fontSize=14;" value="UI page flow (which page leads to which, and who can see it)" vertex="1">
+          <mxGeometry height="30" width="800" x="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pag3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Log in&lt;br&gt;&lt;i&gt;/login/&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pag4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Register&lt;br&gt;&lt;i&gt;/register/&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pag5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Article list (approved)&lt;br&gt;&lt;i&gt;/&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="280" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pag6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Article detail&lt;br&gt;&lt;i&gt;/articles/id/&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="560" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pag7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Newsletter list&lt;br&gt;&lt;i&gt;/newsletters/&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="280" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="pag8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Newsletter detail&lt;br&gt;&lt;i&gt;/newsletters/id/&lt;/i&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="560" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="pag9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="My subscriptions&lt;br&gt;&lt;i&gt;/subscriptions/&lt;/i&gt;&lt;br&gt;Reader only" vertex="1">
+          <mxGeometry height="70" width="180" x="280" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="pag10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Write article&lt;br&gt;&lt;i&gt;/articles/new/&lt;/i&gt;&lt;br&gt;Journalist" vertex="1">
+          <mxGeometry height="70" width="180" x="280" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="pag11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="New newsletter&lt;br&gt;&lt;i&gt;/newsletters/new/&lt;/i&gt;&lt;br&gt;Journalist" vertex="1">
+          <mxGeometry height="70" width="180" x="280" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="pag12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Edit article&lt;br&gt;&lt;i&gt;/articles/id/edit/&lt;/i&gt;&lt;br&gt;Author or editor" vertex="1">
+          <mxGeometry height="70" width="190" x="860" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pag13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Confirm delete&lt;br&gt;&lt;i&gt;/articles/id/delete/&lt;/i&gt;&lt;br&gt;Author or editor" vertex="1">
+          <mxGeometry height="70" width="190" x="860" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="pag14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Review queue&lt;br&gt;&lt;i&gt;/articles/pending/&lt;/i&gt;&lt;br&gt;Editor only" vertex="1">
+          <mxGeometry height="70" width="190" x="560" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="pag15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Approve (POST)&lt;br&gt;&lt;i&gt;/articles/id/approve/&lt;/i&gt;&lt;br&gt;Emails subscribers" vertex="1">
+          <mxGeometry height="70" width="190" x="860" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="pag16" edge="1" parent="1" source="pag4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag3" value="account created">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag17" edge="1" parent="1" source="pag3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag5" value="success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag18" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag6" value="click title">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag19" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag7" value="nav">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag20" edge="1" parent="1" source="pag7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag8" value="click title">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag21" edge="1" parent="1" source="pag8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag6" value="article link">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag22" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag9" value="nav (reader)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag23" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag10" value="nav (journalist)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag24" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag11" value="nav (journalist)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag25" edge="1" parent="1" source="pag6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" value="Edit">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="850" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pag26" edge="1" parent="1" source="pag6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag13" value="Delete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag27" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag14" value="nav (editor)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag28" edge="1" parent="1" source="pag14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag15" value="Approve button">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag29" edge="1" parent="1" source="pag15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag14" value="redirect back">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="My articles&lt;br&gt;&lt;i&gt;/articles/mine/&lt;/i&gt;&lt;br&gt;Drafts, pending, published" vertex="1">
+          <mxGeometry height="70" width="190" x="560" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="pag31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Publish (POST)&lt;br&gt;&lt;i&gt;/articles/id/publish/&lt;/i&gt;&lt;br&gt;Independent drafts only" vertex="1">
+          <mxGeometry height="70" width="190" x="860" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="pag32" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Publishers&lt;br&gt;&lt;i&gt;/publishers/&lt;/i&gt;&lt;br&gt;Editor only" vertex="1">
+          <mxGeometry height="70" width="190" x="560" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="pag33" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="New / edit publisher&lt;br&gt;&lt;i&gt;/publishers/new/&lt;/i&gt;&lt;br&gt;Assign editors and journalists" vertex="1">
+          <mxGeometry height="70" width="190" x="860" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="pag34" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag30" value="nav (journalist)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag35" edge="1" parent="1" source="pag30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag31" value="Publish button">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag36" edge="1" parent="1" source="pag31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag30" value="redirect back">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag37" edge="1" parent="1" source="pag10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag30" value="after saving">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag38" edge="1" parent="1" source="pag5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag32" value="nav (editor)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pag39" edge="1" parent="1" source="pag32" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" target="pag33" value="New / Edit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Wireframes" id="Wir-page">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wir2" value="Wireframes for the main screens (Bootstrap layout)" style="text;html=1;align=left;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="0" width="800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wir3" value="Article list (all roles)" style="swimlane;html=1;startSize=26;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="380" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="wir4" value="Daily Dispatch | Articles | Newsletters | role links | Log out" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#333333;fontColor=#ffffff;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="86" width="360" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="wir5" value="Latest articles" style="text;html=1;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wir6" value="&lt;b&gt;Article title 1&lt;/b&gt;&lt;br&gt;By author · Publisher · date&lt;br&gt;First 40 words of the article…" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="170" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wir7" value="&lt;b&gt;Article title 2&lt;/b&gt;&lt;br&gt;By author · Publisher · date&lt;br&gt;First 40 words of the article…" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="260" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wir8" value="&lt;b&gt;Article title 3&lt;/b&gt;&lt;br&gt;By author · Publisher · date&lt;br&gt;First 40 words of the article…" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="350" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wir9" value="← Newer      Page 1 of 3      Older →" style="text;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="50" y="440" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wir10" value="Article detail" style="swimlane;html=1;startSize=26;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="460" y="50" width="380" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="wir11" value="Daily Dispatch | Articles | Newsletters | role links | Log out" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#333333;fontColor=#ffffff;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="86" width="360" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="wir12" value="&lt;b&gt;Article title&lt;/b&gt;&lt;br&gt;By author · Publisher · date · [Awaiting approval]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="130" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="wir13" value="Full article text …&lt;br&gt;…&lt;br&gt;…" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="210" width="360" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="wir14" value="[Edit]   [Delete]   (author or editor only)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="470" y="440" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wir15" value="Review queue (editor)" style="swimlane;html=1;startSize=26;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="880" y="50" width="380" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="wir16" value="Daily Dispatch | Articles | Newsletters | role links | Log out" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#333333;fontColor=#ffffff;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="890" y="86" width="360" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="wir17" value="Articles awaiting approval" style="text;html=1;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="890" y="130" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wir18" value="&lt;b&gt;Draft title 1&lt;/b&gt;&lt;br&gt;By author · Publisher&lt;br&gt;First 50 words…" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="890" y="170" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wir19" value="[Approve]      [Edit]      [Reject]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="890" y="260" width="360" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="wir20" value="&lt;b&gt;Draft title 2&lt;/b&gt;&lt;br&gt;By author · Independent&lt;br&gt;First 50 words…" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="890" y="306" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wir21" value="[Approve]      [Edit]      [Reject]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="890" y="396" width="360" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="wir22" value="Nothing else to review" style="text;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="890" y="442" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wir23" value="My subscriptions (reader)" style="swimlane;html=1;startSize=26;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="50" width="380" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="wir24" value="Daily Dispatch | Articles | Newsletters | role links | Log out" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#333333;fontColor=#ffffff;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="86" width="360" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="wir25" value="My subscriptions" style="text;html=1;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="130" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wir26" value="Publishers&lt;br&gt;☐ The Daily Test&lt;br&gt;☐ Other Press" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="170" width="360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="wir27" value="Journalists&lt;br&gt;☐ journalist&lt;br&gt;☐ other_journalist" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="270" width="360" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="wir28" value="[Save subscriptions]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="370" width="360" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="ApprovalFlow" id="App-page">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="app2" value="What happens when an editor approves an article (Option 1 – signals)" style="text;html=1;align=left;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="0" width="800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="app3" value="Editor approves a publisher article&lt;br&gt;web: POST /articles/id/approve/&lt;br&gt;API: POST /api/articles/id/approve/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="300" y="50" width="300" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="app4" value="Has approve_article permission?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="330" y="150" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="app5" value="403 Forbidden&lt;br&gt;nothing changes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="700" y="170" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="app6" value="Set approved = True and approved_by = editor&lt;br&gt;article.save()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="300" y="290" width="300" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="app7" value="post_save signal fires&lt;br&gt;handle_article_approval" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="300" y="400" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="app8" value="approved and not&lt;br&gt;approval_notified?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="330" y="500" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="app9" value="Do nothing&lt;br&gt;(already notified)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="700" y="520" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="app10" value="email_subscribers&lt;br&gt;readers following the journalist or publisher,&lt;br&gt;one email each, no duplicates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="640" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="app11" value="post_to_approved_endpoint&lt;br&gt;POST /api/approved/ with X-Internal-Token" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="760" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="app12" value="ApprovedArticleLog row created (201)&lt;br&gt;failures are logged, approval still succeeds" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="870" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="app13" value="approval_notified = True&lt;br&gt;(queryset.update – no signal loop)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="980" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="app14" value="Done" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1080" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="app15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app3" target="app4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app16" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app4" target="app5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app17" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app4" target="app6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app18" value="Independent article (no publisher):&lt;br&gt;the author clicks Publish&lt;br&gt;web: POST /articles/id/publish/&lt;br&gt;API: POST /api/articles/id/publish/&lt;br&gt;then approved = True" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="20" y="285" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="app19" value="joins here" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app18" target="app6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app6" target="app7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app7" target="app8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app22" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app8" target="app9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app23" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app8" target="app10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app10" target="app11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app11" target="app12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app12" target="app13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="app27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;" edge="1" parent="1" source="app13" target="app14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,18 @@
+{% extends "newsroom/base.html" %}
+{% block content %}
+<h1>{{ newsletter.title }}</h1>
+<p class="text-muted">By {{ newsletter.author.username }} &middot; {{ newsletter.created_at|date:"j M Y" }}</p>
+<p>{{ newsletter.description|linebreaks }}</p>
+<h2 class="h5">Articles</h2>
+<ul>
+  {% for article in newsletter.articles.all %}
+    <li><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></li>
+  {% empty %}
+    <li>No articles in this newsletter yet.</li>
+  {% endfor %}
+</ul>
+{% if perms.newsroom.change_newsletter and user.role == 'editor' or newsletter.author == user %}
+  <a class="btn btn-outline-primary" href="{% url 'newsletter_update' newsletter.pk %}">Edit</a>
+  <a class="btn btn-outline-danger" href="{% url 'newsletter_delete' newsletter.pk %}">Delete</a>
+{% endif %}
+{% endblock %}
