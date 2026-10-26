@@ -1,3 +1,5 @@
+"""Signal handlers for newsroom setup and article publication."""
+
 from django.contrib.auth.management import create_permissions
 from django.contrib.auth.models import Group, Permission
 from django.db import DEFAULT_DB_ALIAS
