@@ -1,3 +1,5 @@
+"""Views for registration, articles, publishers, newsletters and subscriptions."""
+
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, permission_required
