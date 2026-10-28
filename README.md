@@ -42,12 +42,13 @@ docker run --env-file .env -p 8000:8000 daily-dispatch
 `.env` is ignored by Git and must never be committed. Copy
 `.env.example` to `.env` and set:
 
-| Variable | Description |
-| --- | --- |
-| `SECRET_KEY` | Django secret key |
-| `DB_NAME`, `DB_USER`, `DB_PASSWORD` | Your database credentials |
-| `DB_HOST`, `DB_PORT` | Database host and port (empty host = SQLite) |
-| `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD` | Email account for approval notices |
+| Category | Variables | Description |
+| --- | --- | --- |
+| Django | `SECRET_KEY` | Django secret key |
+| Database | `DB_NAME`, `DB_USER`, `DB_PASSWORD` | Database credentials |
+| Database | `DB_HOST`, `DB_PORT` | Database host and port (empty host = SQLite) |
+| Email (SMTP) | `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USE_TLS` | SMTP server settings (defaults suit Gmail) |
+| Email (SMTP) | `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD` | SMTP login. Leave both empty and approval emails print to the console instead of being sent. |
 
 Generate a secret key:
 ```bash

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>newsroom.forms &#8212; Daily Dispatch  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for newsroom.forms</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django</span><span class="w"> </span><span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.forms</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserChangeForm</span><span class="p">,</span> <span class="n">UserCreationForm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Article</span><span class="p">,</span> <span class="n">CustomUser</span><span class="p">,</span> <span class="n">Newsletter</span><span class="p">,</span> <span class="n">Publisher</span><span class="p">,</span> <span class="n">Role</span>
+
+
+<div class="viewcode-block" id="AdminUserCreationForm">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.AdminUserCreationForm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AdminUserCreationForm</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Admin form for creating a user with a role."""</span>
+
+<div class="viewcode-block" id="AdminUserCreationForm.Meta">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.AdminUserCreationForm.Meta">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="o">.</span><span class="n">Meta</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Use the custom user model and its extra fields."""</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CustomUser</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"username"</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">,</span> <span class="s2">"role"</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="AdminUserChangeForm">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.AdminUserChangeForm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AdminUserChangeForm</span><span class="p">(</span><span class="n">UserChangeForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Admin form for editing a user, including role and subscriptions."""</span>
+
+<div class="viewcode-block" id="AdminUserChangeForm.Meta">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.AdminUserChangeForm.Meta">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">(</span><span class="n">UserChangeForm</span><span class="o">.</span><span class="n">Meta</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Use the custom user model with every field."""</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CustomUser</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">"__all__"</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="RegistrationForm">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.RegistrationForm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RegistrationForm</span><span class="p">(</span><span class="n">AdminUserCreationForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Public sign-up for every role: Reader, Editor or Journalist."""</span>
+
+    <span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ArticleForm">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.ArticleForm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ArticleForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Create or edit an article; publisher choices depend on the user."""</span>
+
+<div class="viewcode-block" id="ArticleForm.Meta">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.ArticleForm.Meta">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Fields a journalist or editor can edit."""</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Article</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">,</span> <span class="s2">"publisher"</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Limit a journalist's publisher choices to their own publishers."""</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="n">Role</span><span class="o">.</span><span class="n">JOURNALIST</span><span class="p">:</span>
+            <span class="n">publishers</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">journalist_publishers</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">"publisher"</span><span class="p">]</span><span class="o">.</span><span class="n">queryset</span> <span class="o">=</span> <span class="n">publishers</span>
+            <span class="k">if</span> <span class="n">publishers</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">"publisher"</span><span class="p">]</span><span class="o">.</span><span class="n">help_text</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="s2">"Pick a publisher to send this article to its editors "</span>
+                    <span class="s2">"for approval, or leave it independent to publish it "</span>
+                    <span class="s2">"yourself from My articles."</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">"publisher"</span><span class="p">]</span><span class="o">.</span><span class="n">help_text</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="s2">"You are not assigned to a publisher yet, so this will "</span>
+                    <span class="s2">"be an independent article. An editor can add you to a "</span>
+                    <span class="s2">"publisher."</span>
+                <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s2">"publisher"</span><span class="p">]</span><span class="o">.</span><span class="n">empty_label</span> <span class="o">=</span> <span class="s2">"Independent (no publisher)"</span></div>
+
+
+
+<div class="viewcode-block" id="NewsletterForm">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.NewsletterForm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NewsletterForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Create or edit a newsletter from approved articles only."""</span>
+
+    <span class="n">articles</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelMultipleChoiceField</span><span class="p">(</span>
+        <span class="n">queryset</span><span class="o">=</span><span class="n">Article</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">approved</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">CheckboxSelectMultiple</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="NewsletterForm.Meta">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.NewsletterForm.Meta">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Fields a journalist can edit."""</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Newsletter</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"title"</span><span class="p">,</span> <span class="s2">"description"</span><span class="p">,</span> <span class="s2">"articles"</span><span class="p">]</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="SubscriptionForm">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.SubscriptionForm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SubscriptionForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Let a reader choose publishers and journalists to follow."""</span>
+
+<div class="viewcode-block" id="SubscriptionForm.Meta">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.SubscriptionForm.Meta">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Show both subscription fields as checkboxes."""</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">CustomUser</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"subscribed_publishers"</span><span class="p">,</span> <span class="s2">"subscribed_journalists"</span><span class="p">]</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"subscribed_publishers"</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">CheckboxSelectMultiple</span><span class="p">,</span>
+            <span class="s2">"subscribed_journalists"</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">CheckboxSelectMultiple</span><span class="p">,</span>
+        <span class="p">}</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PublisherForm">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.PublisherForm">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PublisherForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Create or edit a publisher and choose its editors and journalists."""</span>
+
+<div class="viewcode-block" id="PublisherForm.Meta">
+<a class="viewcode-back" href="../../newsroom.html#newsroom.admin.PublisherForm.Meta">[docs]</a>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Meta</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Show the staff lists as checkboxes."""</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Publisher</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"name"</span><span class="p">,</span> <span class="s2">"description"</span><span class="p">,</span> <span class="s2">"editors"</span><span class="p">,</span> <span class="s2">"journalists"</span><span class="p">]</span>
+        <span class="n">widgets</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"editors"</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">CheckboxSelectMultiple</span><span class="p">,</span>
+            <span class="s2">"journalists"</span><span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">CheckboxSelectMultiple</span><span class="p">,</span>
+        <span class="p">}</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Daily Dispatch</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">newsroom</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.2.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -14,6 +14,7 @@
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="newsroom package" href="newsroom.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -36,11 +37,32 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="newsroom-migrations-0001-initial-module">
-<h2>newsroom.migrations.0001_initial module<a class="headerlink" href="#newsroom-migrations-0001-initial-module" title="Link to this heading">¶</a></h2>
+<section id="module-newsroom.migrations.0001_initial">
+<span id="newsroom-migrations-0001-initial-module"></span><h2>newsroom.migrations.0001_initial module<a class="headerlink" href="#module-newsroom.migrations.0001_initial" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="newsroom.migrations.0001_initial.Migration">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">newsroom.migrations.0001_initial.</span></span><span class="sig-name descname"><span class="pre">Migration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/newsroom/migrations/0001_initial.html#Migration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#newsroom.migrations.0001_initial.Migration" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Migration</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsroom.migrations.0001_initial.Migration.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[('auth',</span> <span class="pre">'0012_alter_user_first_name_max_length')]</span></span><a class="headerlink" href="#newsroom.migrations.0001_initial.Migration.dependencies" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsroom.migrations.0001_initial.Migration.initial">
+<span class="sig-name descname"><span class="pre">initial</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></span><a class="headerlink" href="#newsroom.migrations.0001_initial.Migration.initial" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="newsroom.migrations.0001_initial.Migration.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;CreateModel</span>&#160; <span class="pre">name='CustomUser',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('password',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('last_login',</span> <span class="pre">&lt;django.db.models.fields.DateTimeField&gt;),</span> <span class="pre">('is_superuser',</span> <span class="pre">&lt;django.db.models.fields.BooleanField&gt;),</span> <span class="pre">('username',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('first_name',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('last_name',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('email',</span> <span class="pre">&lt;django.db.models.fields.EmailField&gt;),</span> <span class="pre">('is_staff',</span> <span class="pre">&lt;django.db.models.fields.BooleanField&gt;),</span> <span class="pre">('is_active',</span> <span class="pre">&lt;django.db.models.fields.BooleanField&gt;),</span> <span class="pre">('date_joined',</span> <span class="pre">&lt;django.db.models.fields.DateTimeField&gt;),</span> <span class="pre">('role',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('groups',</span> <span class="pre">&lt;django.db.models.fields.related.ManyToManyField&gt;),</span> <span class="pre">('subscribed_journalists',</span> <span class="pre">&lt;django.db.models.fields.related.ManyToManyField&gt;),</span> <span class="pre">('user_permissions',</span> <span class="pre">&lt;django.db.models.fields.related.ManyToManyField&gt;)],</span> <span class="pre">options={'verbose_name':</span> <span class="pre">'user',</span> <span class="pre">'verbose_name_plural':</span> <span class="pre">'users',</span> <span class="pre">'abstract':</span> <span class="pre">False},</span> <span class="pre">managers=[('objects',</span> <span class="pre">&lt;django.contrib.auth.models.UserManager</span> <span class="pre">object&gt;)]&gt;,</span> <span class="pre">&lt;CreateModel</span>&#160; <span class="pre">name='Article',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('title',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('content',</span> <span class="pre">&lt;django.db.models.fields.TextField&gt;),</span> <span class="pre">('created_at',</span> <span class="pre">&lt;django.db.models.fields.DateTimeField&gt;),</span> <span class="pre">('approved',</span> <span class="pre">&lt;django.db.models.fields.BooleanField&gt;),</span> <span class="pre">('approval_notified',</span> <span class="pre">&lt;django.db.models.fields.BooleanField&gt;),</span> <span class="pre">('approved_by',</span> <span class="pre">&lt;django.db.models.fields.related.ForeignKey&gt;),</span> <span class="pre">('author',</span> <span class="pre">&lt;django.db.models.fields.related.ForeignKey&gt;)],</span> <span class="pre">options={'ordering':</span> <span class="pre">['-created_at'],</span> <span class="pre">'permissions':</span> <span class="pre">[('approve_article',</span> <span class="pre">'Can</span> <span class="pre">approve</span> <span class="pre">articles')]}&gt;,</span> <span class="pre">&lt;CreateModel</span>&#160; <span class="pre">name='ApprovedArticleLog',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('title',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('payload',</span> <span class="pre">&lt;django.db.models.fields.json.JSONField&gt;),</span> <span class="pre">('received_at',</span> <span class="pre">&lt;django.db.models.fields.DateTimeField&gt;),</span> <span class="pre">('article',</span> <span class="pre">&lt;django.db.models.fields.related.ForeignKey&gt;)],</span> <span class="pre">options={'ordering':</span> <span class="pre">['-received_at']}&gt;,</span> <span class="pre">&lt;CreateModel</span>&#160; <span class="pre">name='Newsletter',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('title',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('description',</span> <span class="pre">&lt;django.db.models.fields.TextField&gt;),</span> <span class="pre">('created_at',</span> <span class="pre">&lt;django.db.models.fields.DateTimeField&gt;),</span> <span class="pre">('articles',</span> <span class="pre">&lt;django.db.models.fields.related.ManyToManyField&gt;),</span> <span class="pre">('author',</span> <span class="pre">&lt;django.db.models.fields.related.ForeignKey&gt;)],</span> <span class="pre">options={'ordering':</span> <span class="pre">['-created_at']}&gt;,</span> <span class="pre">&lt;CreateModel</span>&#160; <span class="pre">name='Publisher',</span> <span class="pre">fields=[('id',</span> <span class="pre">&lt;django.db.models.fields.BigAutoField&gt;),</span> <span class="pre">('name',</span> <span class="pre">&lt;django.db.models.fields.CharField&gt;),</span> <span class="pre">('description',</span> <span class="pre">&lt;django.db.models.fields.TextField&gt;),</span> <span class="pre">('editors',</span> <span class="pre">&lt;django.db.models.fields.related.ManyToManyField&gt;),</span> <span class="pre">('journalists',</span> <span class="pre">&lt;django.db.models.fields.related.ManyToManyField&gt;)],</span> <span class="pre">options={'ordering':</span> <span class="pre">['name']}&gt;,</span> <span class="pre">&lt;AddField</span>&#160; <span class="pre">model_name='article',</span> <span class="pre">name='publisher',</span> <span class="pre">field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;,</span> <span class="pre">&lt;AddField</span>&#160; <span class="pre">model_name='customuser',</span> <span class="pre">name='subscribed_publishers',</span> <span class="pre">field=&lt;django.db.models.fields.related.ManyToManyField&gt;&gt;]</span></span><a class="headerlink" href="#newsroom.migrations.0001_initial.Migration.operations" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<section id="module-newsroom.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-newsroom.migrations" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -70,11 +92,23 @@
     </div>
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">newsroom</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="newsroom.html">newsroom package</a></li>
+</ul>
+</li>
+</ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">newsroom</a><ul>
+  <li><a href="newsroom.html">newsroom package</a><ul>
+      <li>Previous: <a href="newsroom.html" title="previous chapter">newsroom package</a></li>
+  </ul></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -91,7 +125,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &#169;2026, Juwan Slabbert.
+      &#169;.
       
       |
       Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.2.0</a>

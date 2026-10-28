@@ -104,10 +104,20 @@ LOGIN_REDIRECT_URL = "article_list"
 LOGOUT_REDIRECT_URL = "login"
 
 # Emails print to the console unless real SMTP settings are supplied.
-EMAIL_BACKEND = os.environ.get(
-    "EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend"
-)
-DEFAULT_FROM_EMAIL = "news@example.com"
+EMAIL_BACKEND = os.environ.get
+# Emails print to the console unless real SMTP settings are supplied.
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
+EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "587"))
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS", "True") == "True"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+
+if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER or "news@example.com"
 
 # Approved articles are POSTed back to our own API so the integration stays
 # inside the project. The shared token stops outsiders writing to the log.
